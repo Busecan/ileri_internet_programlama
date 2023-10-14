@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>A Paragraph</p>
+    <input value = "Try selection some text in this element.">
+    <script>
+        const getSelectedText = () => window.getSelection.toString()
+        const copyToClipboard = (content) => navigator.clipboard.writeText(content)
+        const secımGerceklesti = () => copyToClipboard(getSelectedText())
+        const secilecek =document.querySelector('body')
+        secilecek.addEventListener('mouseup', secımGerceklesti)
+    </script>
+    
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       //Generate a random string of specified length.
+       const generateRandomString = length => [...Array(length)].map(() => Math.random().toString(36)[2]).join('')
+
+       generateRandomString(12) // cysw0gfljoyx
+       generateRandomString(12) // uoqaugnm8r4s
+    </script>
+</body>
+
+</html>

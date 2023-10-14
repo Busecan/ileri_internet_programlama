@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log([1, 2, 20].reduce((a, b) => a + b, 0))
+        const average = (...args) => args.reduce((a, b) => a + b, 0) / args.length
+        //...args => daha önceki değerleri tutarak üzerine değer alabilmesini sağlar.
+        //reduce => verilen değeri indirgeyerek vermektedir.
+        average(0, 1, 2, -1, 9, 10) // 3.5
+        console.log(average(0, 1, 2, 3, 4, 5, 6))
+    </script>
+</body>
+</html>
