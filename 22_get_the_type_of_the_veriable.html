@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       const typeOf = (obj) =>Object.prototype.toString.call(obj).slice(8,-1).toLowerCase
+
+       typeOf('')         //string
+       typeOf(θ)            //number
+       typeOf()           //undefined
+       typeOf(null)       //null
+       typeOf({})         //object
+       typeOf([])         //array
+       typeOf(θ)           //number
+       typeOf(() => {})   //function
+
+    </script>
+</body>
+
+</html>
