@@ -1,0 +1,44 @@
+<!--
+    Sayfanızda iki tane liste oluşturun
+    Bu iki listenin 4 tane elemanı olsun
+    Listelerin ikiside ul liste olsun
+    listelerin ilk elemanlarını mavi yazı rengine çevirin
+    listelen çift elemanların altını çizin
+    sayfaya bir tane düğme ekleyin
+    düğmeye tıklandığında 2. listeyi gizleyin
+    tekrar tıklandığında listeyi geri geri getirin
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.1.min.js"></script>
+<body>
+    <ul>
+        <li>1.liste 1.eleman</li>
+        <li>1.liste 2.eleman</li>
+        <li>1.liste 3.eleman</li>
+        <li>1.liste 4.eleman</li>
+    </ul>
+    <ul>
+        <li>2.liste 1.eleman</li>
+        <li>2.liste 2.eleman</li>
+        <li>2.liste 3.eleman</li>
+        <li>2.liste 4.eleman</li>
+    </ul>
+    <button>Benjamin</button>
+    <script>
+        $("ul li:first-child").css("color","blue")
+        $("ul li:odd").css("text-decoration","underline")
+        $("button").click(() => {
+            $("ul:eq(1)").toggle();
+        })
+    </script>
+</body>
+
+</html>

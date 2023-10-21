@@ -1,0 +1,127 @@
+<!-- 
+    ekrana 100 tane 10*10 luk kareden oluşan bir kutu çizdirin
+    kutuların renkleri rastgale olsun
+    kutuların içinde numaraları arka plan renginin negatifi ile yazsın
+    kutuların üzerine gelince kutu 13*13 boyuta büyüsün
+    kutunun üzerinden gidilince kutu eski haline geri gelsin
+    tıklanan kutu tamamen kaldırılsın
+    kaybolan kutunun altındaki kutular yukarı çıksın ve 
+        boşluğu kapatılsın
+
+ -->
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Kare Çizimi</title>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <style>
+         #kare {
+             width: 100px;
+             height: 100px;
+             border: 1px solid black;
+             position: relative;
+             font-family: Arial, sans-serif;
+         }
+ 
+         .kare {
+             width: 10px;
+             height: 10px;
+             position: absolute;
+             text-align: center;
+             transition: all 0.2s; /* Geçiş efekti ekliyoruz */
+         }
+     </style>
+ </head>
+ <body>
+     <div id="kare">
+         <!-- Kareler buraya eklenecek -->
+     </div>
+     <script>
+         $(document).ready(function() {
+             var kareSayisi = 100;
+             var kareAlani = $("#kare");
+ 
+             for (var i = 0; i < kareSayisi; i++) {
+                 var kare = $("<div class='kare'></div>");
+                 kareAlani.append(kare);
+ 
+                 // Kareleri düzenli bir şekilde sıralama
+                 var sol = (i % 10) * 10;
+                 var ust = Math.floor(i / 10) * 10;
+ 
+                 kare.css({
+                     left: sol + "px",
+                     top: ust + "px",
+                     background: getRandomColor()
+                 });
+             
+                 // Kutuları tıkladığınızda silme işlemi
+                kare.click(function() {
+                    $(this).remove();
+                });
+
+                 // Numaraları arka plan renginin negatifi ile yazma
+                 var negatifRenk = getNegativeColor(kare.css('background-color'));
+                 kare.css('color', negatifRenk);
+
+                }
+
+                // Kutuları tıkladığınızda silme işlemi ve altındakilerin yukarı çıkması
+                $(".kare").click(function() {
+                    $(this).remove();
+                    // Altındaki kutuları yukarı taşıma işlemi
+                    $(".kare").each(function(index) {
+                        var sol = (index % 10) * 10;
+                        var ust = Math.floor(index / 10) * 10;
+                        $(this).animate({
+                            left: sol + "px",
+                            top: ust + "px"
+                        }, 200);
+                    });
+                });
+           
+ 
+             // Kutuların üzerine gelince boyutunu büyütme
+             kareAlani.on('mouseenter', '.kare', function() {
+                 $(this).css({
+                    transform: "scale(1.3)"
+                 });
+             });
+             kareAlani.on('mouseleave', '.kare', function() {
+                 $(this).css({
+                    transform: "scale(1)"
+                 });
+             });
+        
+ 
+         // Rastgele bir renk oluşturmak için kullanılan fonksiyon
+         function getRandomColor() {
+             var letters = "0123456789ABCDEF";
+             var color = "#";
+             for (var j = 0; j < 6; j++) {
+                 color += letters[Math.floor(Math.random() * 16)];
+             }
+             return color;
+         }
+ 
+         // Bir renkin negatifini almak için kullanılan fonksiyon
+         function getNegativeColor(color) {
+             color = color.slice(1); // Renk kodundaki baştaki "#" işaretini kaldır
+             var r = parseInt(color.slice(0, 2), 16);
+             var g = parseInt(color.slice(2, 4), 16);
+             var b = parseInt(color.slice(4, 6), 16);
+             var negatifR = 255 - r;
+             var negatifG = 255 - g;
+             var negatifB = 255 - b;
+             return "rgb(" + negatifR + ", " + negatifG + ", " + negatifB + ")";
+         }
+    });
+
+     </script>
+ </body>
+ </html>
+ 
+ 
+ 
+ 
